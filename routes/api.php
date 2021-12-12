@@ -25,13 +25,13 @@ Route::namespace("api")->name("api")->group(function(){
 
     Route::prefix("produtos")->group(function(){
 
-        Route::get("/show", [ProductController::class, "show"])->name("show");
+        Route::get("/listar", [ProductController::class, "show"])->name("listar");
         
         Route::post("/cadastrar", [ProductController::class, "create"])->name("cadastrar");
 
-        Route::put("/movimentacao", [ProductController::class, "stock"])->name("movimentacao");
+        Route::put("/movimentacao", [ProductController::class, "store"])->name("movimentacao");
 
-        Route::get("/historico", [ProductController::class, "historico"])->name("historico");
+        Route::get("/historico", [ProductController::class, "history"])->name("historico");
 
 
         //vou deixar as opcoes de testes;

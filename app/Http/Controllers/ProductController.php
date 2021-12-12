@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\History;
 use GuzzleHttp\Psr7\Message;
 
 class ProductController extends Controller
 {
-
-    protected $valor;
-
+    protected $valor;    
+    protected $nome;
+    protected $sku;
+    protected $op;
+    protected $qtd;
+    
     /////////////////////////////////////////////////
 
     public function show()
@@ -24,8 +28,12 @@ class ProductController extends Controller
         try 
         {        
             $dados = $req->all();
+            $history = $req->all();
+            $history["op"] = "Create";
+            
             Product::create($dados);
-    
+            History::create($history);
+
             $return = ["msg"=>"Produto CADASTRADO com SUCESSO!", "Produto"=>$dados];
             return response()->json($return, 201);
         }
@@ -36,17 +44,21 @@ class ProductController extends Controller
         }
     }
 
-    public function stock(Request $req)
+    public function store(Request $req)
     {                
-        $qtd = $req->qtd;
-        $op = $req->op;
+        $qtd        = $req->qtd;
+        $op         = $req->op;
+        $sku        = $req->sku;
 
-        $sku = $req->sku;
+        $busca      = Product::where("sku", $sku)->first();
+        $produto    = Product::find($busca->id);
 
-        $busca = Product::where("sku", $sku)->first();
-
-        $produto = Product::find($busca->id);
-
+        $this->id   = $produto["id"];
+        $this->nome = $produto["nome"];
+        $this->sku  = $produto["sku"];
+        $this->op   = $op;
+        $this->qtd  = $qtd;
+        
             if($op == "venda")
             {
                 $resultado = $produto->qtd - $qtd;
@@ -66,13 +78,22 @@ class ProductController extends Controller
 
             try 
             {
-                $produto->qtd = $this->valor;
+                $produto->qtd       = $this->valor;
                 $produto->update([$produto->qtd]);
+                
+                $history["nome"]            = $this->nome;
+                $history["sku"]             = $this->sku;
+                $history["operacao"]        = ucfirst($this->op);
+                $history["quantidade"]      = $this->qtd;
+                $history["totalestoque"]    = $this->valor;
+                History::create($history);
+                
                 return response()->json($produto, 200);
             } 
             
             catch (\Throwable $e) 
             {
+                //return response()->json($history["operacao"]);
                 return response()->json("ERRO ao atualizar o estoque!" . $e, 400);
             }     
     }
