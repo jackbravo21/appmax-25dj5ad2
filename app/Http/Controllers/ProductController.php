@@ -28,8 +28,12 @@ class ProductController extends Controller
         try 
         {        
             $dados = $req->all();
-            $history = $req->all();
-            $history["op"] = "Create";
+
+            $history["nome"] = $req->nome;
+            $history["sku"] = $req->sku;
+            $history["operacao"] = "Create";
+            $history["quantidade"] = $req->qtd;
+            $history["totalestoque"] = $req->qtd;
             
             Product::create($dados);
             History::create($history);
@@ -40,7 +44,7 @@ class ProductController extends Controller
 
         catch (\Exception $e) 
         {
-            return response()->json("ERRO ao SALVAR o produto!", 400);
+            return response()->json("ERRO ao CADASTRAR o produto!", 400);
         }
     }
 
@@ -86,18 +90,16 @@ class ProductController extends Controller
                 $history["operacao"]        = ucfirst($this->op);
                 $history["quantidade"]      = $this->qtd;
                 $history["totalestoque"]    = $this->valor;
-                History::create($history);
-                
+                History::create($history);   
+
                 return response()->json($produto, 200);
             } 
             
             catch (\Throwable $e) 
             {
-                //return response()->json($history["operacao"]);
                 return response()->json("ERRO ao atualizar o estoque!" . $e, 400);
             }     
     }
-
 
         /////////////////////////////////////////////////
 
