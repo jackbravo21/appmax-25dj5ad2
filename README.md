@@ -24,29 +24,29 @@
 
 # Sobre o projeto;
 
-## EndPoins:
+### EndPoins:
 
-GET:    http://localhost:8000/api/produtos/listar
-GET:    http://localhost:8000/api/produtos/history
-POST:   http://localhost:8000/api/produtos/cadastrar
-POST:   http://localhost:8000/api/produtos/movimentacao
+GET:    http://localhost:8000/api/produtos/listar \ 
+GET:    http://localhost:8000/api/produtos/history \ 
+POST:   http://localhost:8000/api/produtos/cadastrar \ 
+POST:   http://localhost:8000/api/produtos/movimentacao \ 
 
-### No endPoint **"/listar"**, exibe todos os produtos em formato Json;
+#### No endPoint **"/listar"**, exibe todos os produtos em formato Json;
 
-### No endPoint **"/history"**, exibe todo o historico de movimentacoes em formato Json;
+#### No endPoint **"/history"**, exibe todo o historico de movimentacoes em formato Json;
 
-### No endPoint para cadastro de produtos **"/cadastrar"**, deve ser enviando da seguinte maneira como exemplo:
-POST:   http://localhost:8000/api/produtos/cadastrar 
-{ 
-	"nome": "produto", 
-	"sku": "8kn3uo94p1", 
-	"qtd": "12" 
-} 
+#### No endPoint para cadastro de produtos **"/cadastrar"**, deve ser enviando da seguinte maneira como exemplo:
+POST:   http://localhost:8000/api/produtos/cadastrar\ 
+{\ 
+	"nome": "produto",\ 
+	"sku": "8kn3uo94p1",\ 
+	"qtd": "12"\ 
+}\ 
 
-### Produto SKU deve ser unico, sem valores repetidos no banco de dados ou ira retornar um erro;
+#### Produto SKU deve ser unico, sem valores repetidos no banco de dados ou ira retornar um erro;
 
-## Na movimentacao de produtos **"/movimentacao"** deve ser enviado da seguinte maneira como exemplo:
-### A opcao de "op", aceita somente as palavras **"compra"** (compra de material +) ou **"venda"** (venda de material -); 
+### Na movimentacao de produtos **"/movimentacao"** deve ser enviado da seguinte maneira como exemplo:
+#### A opcao de "op", aceita somente as palavras **"compra"** (compra de material +) ou **"venda"** (venda de material -); 
 POST:   http://localhost:8000/api/produtos/movimentacao 
 { 
 	"sku": "8kn3uo94p1", 
@@ -61,11 +61,11 @@ ou:
 	"qtd": "30" 
 } 
 
-### As funcoes do controllador acessam os models atraves dos fillable, portanto nao eh necessario a instancia das classes, apenas utilizar o Elouquente;
+#### As funcoes do controllador acessam os models atraves dos fillable, portanto nao eh necessario a instancia das classes, apenas utilizar o Elouquente;
 
 ---
 
-## Caso queira testar a passagem de dados, de diferentes maneiras e diferentes saidas, utilize os endPoints de teste baixo: 
+### Caso queira testar a passagem de dados, de diferentes maneiras e diferentes saidas, utilize os endPoints de teste baixo: 
  
 GET:    http://localhost:8000/api/produtos/teste
  
@@ -74,7 +74,7 @@ POST:   http://localhost:8000/api/produtos/testeecho
 POST:   http://localhost:8000/api/produtos/testejson 
 
 
-## Deve ser passado os dados de teste em Json padrao: 
+### Deve ser passado os dados de teste em Json padrao: 
 
 { 
 	"nome": "produto", 
