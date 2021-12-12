@@ -29,7 +29,7 @@
 GET:    http://localhost:8000/api/produtos/listar
 GET:    http://localhost:8000/api/produtos/history
 POST:   http://localhost:8000/api/produtos/cadastrar
-PUT:    http://localhost:8000/api/produtos/movimentacao
+POST:    http://localhost:8000/api/produtos/movimentacao
 
 # No endPoint "/listar", exibe todos os produtos em formato Json;
 

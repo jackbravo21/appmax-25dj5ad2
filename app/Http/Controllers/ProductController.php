@@ -60,8 +60,8 @@ class ProductController extends Controller
         $op         = $req->op;
         $sku        = $req->sku;
 
-        $busca      = Product::where("sku", $sku)->first();
-        $produto    = Product::find($busca->id);
+        $produto      = Product::where("sku", $sku)->first();
+        //$busca    = Product::find($produto->id);
 
         $this->id   = $produto["id"];
         $this->nome = $produto["nome"];
