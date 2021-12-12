@@ -37,7 +37,7 @@ class ProductController extends Controller
 
             $history["nome"] = $req->nome;
             $history["sku"] = $req->sku;
-            $history["operacao"] = "Criado";
+            $history["operacao"] = "Cadastro";
             $history["quantidade"] = $req->qtd;
             $history["totalestoque"] = $req->qtd;
             
