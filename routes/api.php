@@ -29,7 +29,7 @@ Route::namespace("api")->name("api")->group(function(){
         
         Route::post("/cadastrar", [ProductController::class, "create"])->name("cadastrar");
 
-        Route::put("/movimentacao", [ProductController::class, "store"])->name("movimentacao");
+        Route::post("/movimentacao", [ProductController::class, "store"])->name("movimentacao");
 
         Route::get("/historico", [ProductController::class, "history"])->name("historico");
 
