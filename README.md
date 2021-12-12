@@ -36,6 +36,7 @@ POST:   http://localhost:8000/api/produtos/movimentacao
 # No endPoint "/history", exibe todo o historico de movimentacoes em formato Json;
 
 # No endPoint para cadastro de produtos "/cadastrar", deve ser enviando da seguinte maneira como exemplo:
+POST:   http://localhost:8000/api/produtos/cadastrar
 {
 	"nome": "produto",
 	"sku": "8kn3uo94p1",
@@ -46,10 +47,18 @@ POST:   http://localhost:8000/api/produtos/movimentacao
 
 # Na movimentacao de produtos "/movimentacao" deve ser enviado da seguinte maneira como exemplo:
 ## A opcao de "op", aceita somente as palavras "compra" (compra de material +) ou "venda" (venda de material -);
+POST:   http://localhost:8000/api/produtos/movimentacao
 {
 	"sku": "8kn3uo94p1",
 	"op": "venda",
 	"qtd": "10"
+}
+
+ou:
+{
+	"sku": "8kn3uo94p1",
+	"op": "compra",
+	"qtd": "30"
 }
 
 # As funcoes do controllador acessam os models atraves dos fillable, portanto nao eh necessario a instancia das classes, apenas utilizar o Elouquente;
