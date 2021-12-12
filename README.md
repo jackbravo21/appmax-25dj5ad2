@@ -61,26 +61,22 @@ POST:   http://localhost:8000/api/produtos/cadastrar
 POST:   http://localhost:8000/api/produtos/movimentacao 
 
 { 
-
 	"sku": "8kn3uo94p1", 
 
 	"op": "venda", 
 
 	"qtd": "10" 
-
 } 
 
   
 ou: 
 
 { 
-
 	"sku": "8kn3uo94p1", 
 
 	"op": "compra", 
 
 	"qtd": "30" 
-
 } 
 
 
@@ -100,11 +96,9 @@ POST:   http://localhost:8000/api/produtos/testejson
 ### Deve ser passado os dados de teste em Json padrao: 
 
 { 
-
 	"nome": "produto", 
 
 	"sku": "8k3hf8k4", 
 
 	"qtd": "12" 
-	
 } 
