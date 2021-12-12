@@ -23,6 +23,12 @@ class ProductController extends Controller
         return response()->json($data);
     }
 
+    public function history()
+    {
+        $data = History::all();
+        return response()->json($data);
+    }
+
     public function create(Request $req)
     {
         try 
