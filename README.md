@@ -39,7 +39,7 @@ No endPoint **"/listar"**, exibe todos os produtos em formato Json;
 
 No endPoint **"/history"**, exibe todo o historico de movimentacoes em formato Json;
 
-No endPoint para cadastro de produtos **"/cadastrar"**, deve ser enviando da seguinte maneira como exemplo:
+No endPoint para cadastro de produtos **"/cadastrar"**, deve ser enviando da seguinte maneira via Json como exemplo:
 
 POST:   http://localhost:8000/api/produtos/cadastrar
 
@@ -55,7 +55,7 @@ POST:   http://localhost:8000/api/produtos/cadastrar
 
 #### Produto SKU deve ser unico, sem valores repetidos no banco de dados ou ira retornar um erro;
 
-Na movimentacao de produtos **"/movimentacao"** deve ser enviado da seguinte maneira como exemplo:
+Na movimentacao de produtos **"/movimentacao"** deve ser enviado via Json da seguinte maneira como exemplo:
 A opcao de "op", aceita somente as palavras **"compra"** (compra de material +) ou **"venda"** (venda de material -); 
 
 POST:   http://localhost:8000/api/produtos/movimentacao 
